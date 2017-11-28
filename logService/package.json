@@ -1,0 +1,17 @@
+{
+  "name": "logService",
+  "private": true,
+  "version": "0.0.1",
+  "description": "API (Using gRPC)",
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "boom": "^5.2.0",
+    "grpc": "^1.7.2",
+    "mongoose": "^4.13.5"
+  },
+  "devDependencies": {}
+}

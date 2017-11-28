@@ -1,0 +1,39 @@
+
+syntax = "proto3"; //Specify proto3 version.
+
+package microservice; //Optional: unique package name.
+
+service SSOService {
+  rpc authenticate (AuthenticateRequest) returns (GenericResponse) {}
+  rpc authorize (AuthorizeRequest) returns (GenericResponse) {}
+
+}
+
+// The request message containing the user's name.
+message AuthenticateRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message AuthorizeRequest {
+    string token = 1;
+}
+
+// The response message 
+message GenericResponse {
+  Meta meta = 1;
+  Data data = 2;
+}
+
+message Meta {
+    int32 code = 1;
+}
+
+message Data {
+    oneof message {
+        string message_value = 1;
+    };
+    oneof token {
+        string token_value = 2;
+    };
+}

@@ -1,0 +1,28 @@
+
+syntax = "proto3"; //Specify proto3 version.
+
+package microservice; //Optional: unique package name.
+
+service LogService {
+  rpc saveLog (LogRequest) returns (GenericResponse) {}
+}
+
+message LogRequest {
+  string serviceName = 1;
+  string logMessage = 2;
+  string token = 3;
+}
+
+// The response message 
+message GenericResponse {
+  Meta meta = 1;
+  Data data = 2;
+}
+
+message Meta {
+    int32 code = 1;
+}
+
+message Data {
+    string message = 1;
+}
