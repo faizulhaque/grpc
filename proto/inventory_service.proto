@@ -1,0 +1,43 @@
+
+syntax = "proto3"; //Specify proto3 version.
+
+package microservice; //Optional: unique package name.
+
+service InventoryService {
+  rpc getItems (InventoryPageRequest) returns (GenericResponse) {}
+  rpc getItemById (InventoryByItemIdRequest) returns (GenericResponse) {}
+}
+
+message InventoryPageRequest {
+  int32 pageNo = 1;
+  int32 pageSize = 2;
+  string token = 3;
+}
+
+message InventoryByItemIdRequest {
+  string id = 1;
+  string token = 2;
+}
+
+message GenericResponse {
+  Meta meta = 1;
+  Data data = 2;
+}
+
+message Meta {
+    int32 code = 1;
+    int32 total = 2;
+}
+
+message Data {
+    repeated Item items = 1;
+    oneof message {
+        string message_value = 2;
+    };
+}
+
+message Item {
+    string id = 1;
+    string name = 2;
+    string price = 3;
+}

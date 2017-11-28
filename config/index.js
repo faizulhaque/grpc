@@ -13,6 +13,13 @@ function config() {
             mongoose: {
                 url: 'mongodb://localhost/microservice_sso'
             }
+        },
+        inventoryService: {
+            host: '0.0.0.0',
+            port: '500052',
+            mongoose: {
+                url: 'mongodb://localhost/microservice_inventory'
+            }
         }
     }
 }
